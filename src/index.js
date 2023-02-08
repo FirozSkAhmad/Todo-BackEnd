@@ -18,6 +18,9 @@ mongoose.connect(process.env.CLUSTER,
 
 
 app.use('/', route)
+app.use('/*', (req,res)=>{
+    res.status(400).send("invalid url")
+})
 
 app.listen(process.env.PORT, () => {
     console.log("Express app is running on port:" + process.env.PORT)
